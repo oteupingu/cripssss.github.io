@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aplicação Unificada</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -14,24 +13,9 @@ body {
     align-items: center;
     padding: 20px;
 }
-.page {
-    display: none;
-    width: 100%;
-    max-width: 1200px;
-}
-.page.active {
-    display: block;
-}
-.table-container, .container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    margin: 10px 0;
-}
 button {
     padding: 10px 20px;
-    margin: 5px;
+    margin: 10px;
     border: none;
     background-color: #28a745;
     color: white;
@@ -45,61 +29,13 @@ button:hover { background-color: #218838; }
 <body>
 
 <h1>Aplicação Unificada</h1>
-<!-- Botões de navegação -->
+
+<!-- Botões para abrir os HTMLs hospedados -->
 <div>
-    <button onclick="showPage('https://oteupingu.github.io/cripssss.github.io/compras.html')">Compras</button>
-    <button onclick="showPage('page2')">Vendas</button>
-    <button onclick="showPage('page3')">Gráfico</button>
+    <button onclick="window.location.href='https://cripssss.github.io/compras.html'">Compras</button>
+    <button onclick="window.location.href='https://cripssss.github.io/org.html'">Org/Vendas</button>
+    <button onclick="window.location.href='https://cripssss.github.io/grafico.html'">Gráfico</button>
 </div>
 
-<!-- Página 1: Compras -->
-<div id="page1" class="page active">
-    <h2>Calculadora de Compras</h2>
-    <div class="container" id="comprasContainer">
-        <p>Calculadora de Compras carregada...</p>
-    </div>
-</div>
-
-<!-- Página 2: Vendas -->
-<div id="page2" class="page">
-    <h2>Calculadora de Vendas</h2>
-    <div class="container" id="vendasContainer">
-        <p>Calculadora de Vendas carregada...</p>
-    </div>
-</div>
-
-<!-- Página 3: Gráfico -->
-<div id="page3" class="page">
-    <h2>Gráfico de Totais</h2>
-    <div class="table-container" id="graficoContainer">
-        <canvas id="totalsChart"></canvas>
-    </div>
-</div>
-
-<script>
-// Função para mostrar apenas a página selecionada
-function showPage(pageId) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(pageId).classList.add('active');
-}
-
-// ================== OFUSCAÇÃO DOS SCRIPTS ==================
-// Base64 dos scripts originais (exemplo reduzido)
-const comprasScript = `ZnVuY3Rpb24gY2FsY3VsYXJDb21wcmFzcygpIHsgY29uc29sZS5sb2coIkNvbXByYXMgc2V1ISIpOyB9IGNhbGN1bGFyQ29tcHJhc3MoKTs=`;
-const vendasScript = `ZnVuY3Rpb24gY2FsY3VsYXJWZW5kYXMoKSB7IGNvbnNvbGUubG9nKCJWZW5kYXMgc2V1ISIpOyB9IGNhbGN1bGFyVmVuZGFzKCk7`;
-const graficoScript = `ZnVuY3Rpb24gY3JlYXRlR3JhZmllKCkgeyBjb25zb2xlLmxvZygiR3JhZmljbyBjcmVhZG8hIik7IH0gY3JlYXRlR3JhZmllKCk7`;
-
-// Função para decodificar e executar
-function loadScript(base64) {
-    eval(atob(base64));
-}
-
-// Carrega os scripts das divs correspondentes
-document.addEventListener('DOMContentLoaded', () => {
-    loadScript(comprasScript);
-    loadScript(vendasScript);
-    loadScript(graficoScript);
-});
-</script>
 </body>
 </html>
