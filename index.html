@@ -31,7 +31,7 @@ body {
 }
 button {
     padding: 10px 20px;
-    margin-top: 10px;
+    margin: 5px;
     border: none;
     background-color: #28a745;
     color: white;
@@ -44,18 +44,28 @@ button:hover { background-color: #218838; }
 </head>
 <body>
 
+<h1>Aplicação Unificada</h1>
+<!-- Botões de navegação -->
+<div>
+    <button onclick="showPage('page1')">Compras</button>
+    <button onclick="showPage('page2')">Vendas</button>
+    <button onclick="showPage('page3')">Gráfico</button>
+</div>
+
 <!-- Página 1: Compras -->
 <div id="page1" class="page active">
     <h2>Calculadora de Compras</h2>
-    <div class="container" id="comprasContainer"></div>
-    <button onclick="nextPage(1)">Próxima Página</button>
+    <div class="container" id="comprasContainer">
+        <p>Calculadora de Compras carregada...</p>
+    </div>
 </div>
 
-<!-- Página 2: Vendas / Org -->
+<!-- Página 2: Vendas -->
 <div id="page2" class="page">
     <h2>Calculadora de Vendas</h2>
-    <div class="container" id="vendasContainer"></div>
-    <button onclick="nextPage(2)">Próxima Página</button>
+    <div class="container" id="vendasContainer">
+        <p>Calculadora de Vendas carregada...</p>
+    </div>
 </div>
 
 <!-- Página 3: Gráfico -->
@@ -67,10 +77,10 @@ button:hover { background-color: #218838; }
 </div>
 
 <script>
-// Função de navegação sequencial
-function nextPage(current) {
-    document.getElementById('page' + current).classList.remove('active');
-    document.getElementById('page' + (current + 1)).classList.add('active');
+// Função para mostrar apenas a página selecionada
+function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
 }
 
 // ================== OFUSCAÇÃO DOS SCRIPTS ==================
@@ -86,12 +96,8 @@ function loadScript(base64) {
 
 // Carrega os scripts das divs correspondentes
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('comprasContainer').innerHTML = '<p>Calculadora de Compras carregada...</p>';
     loadScript(comprasScript);
-
-    document.getElementById('vendasContainer').innerHTML = '<p>Calculadora de Vendas carregada...</p>';
     loadScript(vendasScript);
-
     loadScript(graficoScript);
 });
 </script>
